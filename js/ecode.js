@@ -1,0 +1,12 @@
+"use strict";
+const ERROR_OK = 0;
+const ERROR_FAILED = 1;
+const ERROR_FILE_NOT_FOUND = 2;
+const ERROR_ILLEGAL_FILE = 3;
+const ERROR_OUT_OF_MEMORY = 4;
+
+module.exports.ERROR_OK = ERROR_OK;
+module.exports.ERROR_FAILED = ERROR_FAILED;
+module.exports.ERROR_FILE_NOT_FOUND = ERROR_FILE_NOT_FOUND;
+module.exports.ERROR_ILLEGAL_FILE = ERROR_ILLEGAL_FILE;
+module.exports.ERROR_OUT_OF_MEMORY = ERROR_OUT_OF_MEMORY;

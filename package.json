@@ -1,0 +1,26 @@
+{
+  "name": "electron-fc",
+  "version": "0.0.1",
+  "description": "a famicom (NES) emulator using electron",
+  "main": "main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \\\\\\\"Error: no test specified\\\\\\\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [
+    "electron",
+    "famicom",
+    "nes"
+  ],
+  "author": "zhuzilin",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^5.0.6"
+  },
+  "dependencies": {
+    "mousetrap": "^1.6.3"
+  }
+}
