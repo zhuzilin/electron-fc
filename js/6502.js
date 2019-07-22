@@ -448,6 +448,7 @@ module.exports.disassembly_6502 = function (code) {
     switch (mode)
     {
         case AM_UNK:
+            // fall through
         case AM_IMP:
             // XXX     ;
             break;
@@ -463,8 +464,10 @@ module.exports.disassembly_6502 = function (code) {
             break;
         case AM_ABS:
             // XXX $ABCD
+            // fall through
         case AM_ABX:
             // XXX $ABCD, X
+            // fall through
         case AM_ABY:
             // XXX $ABCD, Y
             // REAL
@@ -477,8 +480,10 @@ module.exports.disassembly_6502 = function (code) {
             break;
         case AM_ZPG:
             // XXX $AB
+            // fall through
         case AM_ZPX:
             // XXX $AB, X
+            // fall through
         case AM_ZPY:
             // XXX $AB, Y
             // REAL
@@ -576,7 +581,7 @@ function addressing_ABX(fc, cycle) {
 
 function addressing_abx(fc, cycle) {
     const base = addressing_ABS(fc, cycle);
-    const address = (base + fc.registers.x_index) & 0xffff;;
+    const address = (base + fc.registers.x_index) & 0xffff;
     return address;
 }
 

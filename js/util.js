@@ -1,3 +1,5 @@
+"use strict";
+
 let { TextEncoder } = require('util');
 
 let enc = new TextEncoder();
@@ -9,7 +11,7 @@ module.exports.str2uint8 = (s) => {
 module.exports.cmp_uint32_uint8 = (x, ys) => {
     let dataview = new DataView(ys.buffer);
     // in C, the default encoding is littleEndian
-    y = dataview.getUint32(0, true);
+    let y = dataview.getUint32(0, true);
     return x === y;
 };
 

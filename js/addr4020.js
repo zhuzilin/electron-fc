@@ -1,3 +1,4 @@
+let assert = require('assert');
 
 let key_map = {
     'j': 0,  // A
@@ -44,9 +45,11 @@ function get_dma_address(fc, data, len) {
         case 1:
             // PPU寄存器
             assert(false, "PPU REG!");
+            return;
         case 2:
             // 扩展区
             assert(false, "TODO");
+            return;
         case 0:
             // 系统内存
             if(len) {

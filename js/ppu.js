@@ -1,6 +1,5 @@
 'use strict';
 let assert = require('assert');
-let { operation_NMI } = require('./6502');
 let {
     PPU2000_BgTabl,
     PPU2000_NMIGen,
@@ -123,6 +122,7 @@ ppu.read_ppu_register_via_cpu = (address) => {
         case 0:
             // 0x2000: Controller ($2000) > write
             // 只写寄存器
+            // fall through
         case 1:
             // 0x2001: Mask ($2001) > write
             // 只写寄存器
@@ -150,6 +150,7 @@ ppu.read_ppu_register_via_cpu = (address) => {
         case 5:
             // 0x2005: Scroll ($2005) >> write x2
             // 双写寄存器
+            // fall through
         case 6:
             // 0x2006: Address ($2006) >> write x2
             // 双写寄存器

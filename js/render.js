@@ -3,12 +3,7 @@
 const {
     WIDTH, HEIGHT, SPRITE_COUNT,
     PPU2000_SpTabl,
-    PPU2001_Back,
-    PPU2001_Sprite,
     PPU2000_Sp8x16,
-    PPU2002_SpOver,
-    SPATTR_FlipH,
-    SPATTR_FlipV,
     MASTER_CYCLE_PER_CPU,
     PPU2002_VBlank,
     PPU2000_NMIGen,
@@ -304,7 +299,7 @@ function render_frame(fc, buffer) {
     //QueryPerformanceCounter(&t0);
     
 
-    for (let i = 63; i !== -1; --i) {
+    for (let i = SPRITE_COUNT - 1; i !== -1; --i) {
         const yy = fc.ppu.sprites[i*4 + 0];
         if (yy >= 0xef) continue;
         const ii = fc.ppu.sprites[i*4 + 1];
@@ -326,6 +321,7 @@ function render_frame(fc, buffer) {
                     let p1 = fc.ppu.banks[Math.floor((nowp1 + j + 16) / 1024)][(nowp1 + j + 16) % 1024];
                     sprite_expand_8_on(p0, p1, high, buffer, write + WIDTH * (j + 8));
                 }
+                // fall through
             case 0x0:
                 // 0000: 前
                 for (let j = 0; j != 8; ++j) {
@@ -341,6 +337,7 @@ function render_frame(fc, buffer) {
                     let p1 = fc.ppu.banks[Math.floor((nowp1 + j + 16) / 1024)][(nowp1 + j + 16) % 1024];
                     sprite_expand_8_op(p0, p1, high, buffer, write + WIDTH * (j + 8));
                 }
+                // fall through
             case 0x1:
                 // 0001: 后
                 for (let j = 0; j != 8; ++j) {
@@ -356,6 +353,7 @@ function render_frame(fc, buffer) {
                     let p1 = fc.ppu.banks[Math.floor((nowp1 + j + 16) / 1024)][(nowp1 + j + 16) % 1024];
                     sprite_expand_8_rn(p0, p1, high, buffer, write + WIDTH * (j + 8));
                 }
+                // fall through
             case 0x2:
                 // 0010: 水平翻转 前 
                 for (let j = 0; j != 8; ++j) {
@@ -371,6 +369,7 @@ function render_frame(fc, buffer) {
                     let p1 = fc.ppu.banks[Math.floor((nowp1 + j + 16) / 1024)][(nowp1 + j + 16) % 1024];
                     sprite_expand_8_rp(p0, p1, high, buffer, write + WIDTH * (j + 8));
                 }
+                // fall through
             case 0x3:
                 // 0011: 水平翻转 后
                 for (let j = 0; j != 8; ++j) {

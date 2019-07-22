@@ -1,6 +1,6 @@
 let { famicom } = require('./famicom');
 let Mousetrap = require('mousetrap');
-let { key_map, user_input } = require('./addr4020');
+let { key_map } = require('./addr4020');
 
 function main() {
     let e = famicom.init(null, null);

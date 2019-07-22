@@ -1,5 +1,4 @@
 let { famicom } = require('./famicom');
-let { key_map, user_input } = require('./addr4020');
 
 famicom.line = 0;
 
@@ -20,9 +19,6 @@ function log_exec(arg, fc) {
             `SP:${famicom.registers.stack_pointer.toString(16).padStart(2, '0')}`);
     }
 }
-
-const MAX_ROW = 256;
-const MAX_COL = 240;
 
 function main() {
     let e = famicom.init(null, null);

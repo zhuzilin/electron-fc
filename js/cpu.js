@@ -1,12 +1,6 @@
 "use strict";
 let assert = require('assert');
-let { famicom } = require('./famicom');
-let { ERROR_OK,
-    ERROR_FAILED,
-    ERROR_FILE_NOT_FOUND,
-    ERROR_ILLEGAL_FILE,
-    ERROR_OUT_OF_MEMORY } = require('./ecode');
-let { add_hex, disassembly_6502, operation_NMI } =require('./6502');
+let { add_hex, disassembly_6502 } =require('./6502');
 let {  replaceAt } = require('./util');
 
 let cpu_registers = {

@@ -1,10 +1,6 @@
 "use strict";
 let assert = require('assert');
-let { ERROR_OK,
-    ERROR_FAILED,
-    ERROR_FILE_NOT_FOUND,
-    ERROR_ILLEGAL_FILE,
-    ERROR_OUT_OF_MEMORY } = require('./ecode');
+let { ERROR_OK } = require('./ecode');
 
 // --------------------------------------- MAPPER 000 NROM
 let mapper_00_reset = function(fc) {
