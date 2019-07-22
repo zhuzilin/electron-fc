@@ -25,14 +25,14 @@ let { cpu_execute_one } = require('./6502');
 let { ppu, main_render } = require('./ppu');
 let { user_input, read_cpu_address4020, write_cpu_address4020 } = require('./addr4020');
 let { CONFIG_PAL, CONFIG_NTSC } = require('./config');
-let resolve = require('path').resolve
+
 
 /*
  * Load ROM
  */
 let load_default_rom = function (arg, info) {
     assert(info.data_prgrom === null, "didn't free the rom before loading");
-    let data = fs.readFileSync(resolve('.\\test\\sm.nes'));
+    let data = fs.readFileSync('C:\\Zilin\\electron\\electron-fc\\test\\pacman.nes');
     let rom_data = new Uint8Array(data);
     let i = 0;  // offset
     i = nes_header.init(rom_data, i);

@@ -245,7 +245,7 @@ function main_render(fc) {
     let buffer = new Uint8Array(WIDTH * HEIGHT);
 
     render_frame(fc, buffer);
-
+    
     for (let i = 0; i !== 256 * 240; ++i) {
         pixel2data(stdpalette[buffer[i]], data, i);
     }
