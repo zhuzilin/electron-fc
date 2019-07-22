@@ -95,7 +95,7 @@ function render_background_scanline(fc, line, sppbuffer, buffer, buffer_offset) 
             hittest |= background_hittest[i];
         }
         const spp = sppbuffer[index & 1];
-        const nowp0 = spp + index * 16;
+        const nowp0 = spp + (index & 0xfe) * 16;
         const nowp1 = nowp0 + 8;
         const sphit = fc.ppu.banks[Math.floor((nowp0 + line - yyyyy) / 1024)][(nowp0 + line - yyyyy) % 1024] |
             fc.ppu.banks[Math.floor((nowp1 + line - yyyyy) / 1024)][(nowp1 + line - yyyyy) % 1024]
