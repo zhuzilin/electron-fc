@@ -1,6 +1,6 @@
 "use strict";
-const { app, BrowserWindow } = require('electron')
-
+const { app, shell, BrowserWindow, Menu } = require('electron')
+const {template} = require('./menu');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
@@ -33,6 +33,9 @@ function createWindow () {
         // when you should delete the corresponding element.
         win = null
     })
+
+    const menu = Menu.buildFromTemplate(template(app, shell, win))
+    Menu.setApplicationMenu(menu)
 }
 
 // This method will be called when Electron has finished

@@ -2,8 +2,8 @@ let { famicom } = require('./famicom');
 let Mousetrap = require('mousetrap');
 let { key_map } = require('./addr4020');
 
-function main() {
-    let e = famicom.init(null, null);
+function main(fileName) {
+    let e = famicom.init(null, null, fileName);
     if (e)
         throw e;
     console.log(`ROM: PRG-ROM: ${famicom.rom_info.count_prgrom16kb} x 16kb`);
@@ -20,4 +20,4 @@ function main() {
     famicom.main_render();
 }
 
-main();
+module.exports.main = main;

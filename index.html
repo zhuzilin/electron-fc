@@ -9,9 +9,13 @@
 <canvas id="canvas" width=256 height=240></canvas>
 </body>
 <script>
-    //let { webFrame } = require('electron');
+    let { ipcRenderer } = require('electron');
+    let { main } = require('./js/canvas_main');
     //webFrame.setZoomFactor(2)
-    require('./js/canvas_main');
+    ipcRenderer.on('load', (event, msg) => {
+        console.log(msg);
+        main(msg[0])
+    })
 
 </script>
 </html>

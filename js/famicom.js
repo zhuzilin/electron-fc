@@ -28,9 +28,9 @@ let { CONFIG_NTSC } = require('./config');
 /*
  * Load ROM
  */
-let load_default_rom = function (arg, info) {
+let load_default_rom = function (arg, info, fileName) {
     assert(info.data_prgrom === null, "didn't free the rom before loading");
-    let data = fs.readFileSync(path.resolve(__dirname, '../test/sm.nes'));
+    let data = fs.readFileSync(fileName);
     let rom_data = new Uint8Array(data);
     let i = 0;  // offset
     i = nes_header.init(rom_data, i);
@@ -67,11 +67,11 @@ let free_default_rom = function (arg, info) {
 
 let before_execute = () => {};
 
-let load_new_rom = function(fc) {
+let load_new_rom = function(fc, fileName) {
     let ecode = fc.interfaces.free_rom(fc.arguments, fc.rom_info);
     fc.rom_info.reset();
     if (ecode === ERROR_OK) {
-        ecode = fc.interfaces.load_rom(fc.arguments, fc.rom_info);
+        ecode = fc.interfaces.load_rom(fc.arguments, fc.rom_info, fileName);
     }
     if (ecode === ERROR_OK) {
         ecode = fc.load_mapper(fc.rom_info.mapper_number);
@@ -119,7 +119,7 @@ let famicom = {
     main_memory: new Uint8Array(2 * 1024),
 };
 
-famicom.init = (argument, interfaces) => {
+famicom.init = (argument, interfaces, fileName) => {
     famicom.argument = argument;
     famicom.interfaces = interfaces;
     if (famicom.interfaces === null) {
@@ -141,7 +141,7 @@ famicom.init = (argument, interfaces) => {
     famicom.rom_info = rom_info;
     famicom.rom_info.reset();
     // load rom
-    return load_new_rom(famicom);
+    return load_new_rom(famicom, fileName);
 };
 
 famicom.uninit = () => {

@@ -1,6 +1,6 @@
 {
   "name": "electron-fc",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "a famicom (NES) emulator using electron",
   "main": "main.js",
   "directories": {
@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \\\\\\\"Error: no test specified\\\\\\\" && exit 1",
     "start": "electron .",
-    "lint": "eslint ./js --fix"
+    "lint": "eslint ./js --fix",
+    "build": "electron-builder ."
   },
   "keywords": [
     "electron",
@@ -20,6 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^5.0.6",
+    "electron-builder": "^21.1.1",
     "eslint": "^6.1.0"
   },
   "dependencies": {
